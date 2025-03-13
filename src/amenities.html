@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="src./output.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Residencia Del Hamor|Amenities</title>
+  <style>
+    /* Define the animation for text */
+    @keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  opacity: 0; /* Ensures the text remains hidden initially */
+  animation: fadeInUp 1.2s ease-out forwards;
+}
+
+.carousel {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+        .carousel img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        .carousel img.active {
+            opacity: 1;
+        }
+        /* Fade-in effect for text */
+        .fade-in-text {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out forwards 0.5s;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .room-card:hover img {
+            transform: scale(1.1);
+        }
+        .room-card img {
+            transition: transform 0.3s ease-in-out;
+        }
+  </style>
+</head>
+<body>
+  
+ <!-- Sticky Navigation Bar -->
+<!-- Sticky Navigation Bar -->
+<nav id="navbar" class="sticky top-0 z-50 bg-[#F5F5F5] shadow-md transition-all duration-500 ease-in-out">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4 transition-all duration-500">
+        
+        <!-- Logo & Brand Name -->
+        <a href="#" class="flex items-center">
+          <img src="logo.png" alt="Logo" class="h-10 w-auto mr-3" />
+          <span class="text-black text-xl md:text-2xl">Residencia Del Hamor</span>
+        </a>
+  
+        <!-- Desktop Menu + Book Now Button -->
+        <div class="hidden md:flex items-center space-x-6 relative">
+          <ul class="flex space-x-6 relative" id="nav-links">
+            <li><a href="index.html" class="nav-link text-black hover:text-gray-400 transition relative">Home</a></li>
+            <li><a href="amenities.html" class="nav-link text-black hover:text-gray-400 transition relative">Amenities</a></li>
+            <li><a href="accommodations.html" class="nav-link text-black hover:text-gray-400 transition relative">Accommodations</a></li>
+            <li><a href="contact.html" class="nav-link text-black hover:text-gray-400 transition relative">Contact</a></li>
+          </ul>
+          <!-- Highlighted Book Now Button -->
+          <a href="book.html" class="bg-blue-600 text-white font-semibold px-5 py-2 rounded-full shadow-lg hover:bg-blue-700 transition">
+            Book Now
+          </a>
+        </div>
+  
+        <!-- Mobile Menu Button -->
+        <button id="nav-toggle" class="md:hidden text-black focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor"  
+            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                  d="M4 8h16M4 16h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Mobile Sidebar Menu -->
+  <div id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-50 transform translate-x-full md:hidden transition-transform duration-300 ease-in-out">
+    <!-- Close Button -->
+    <button id="close-menu" class="p-4 text-black focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  
+    <!-- Mobile Navigation Links -->
+    <ul class="flex flex-col space-y-4 p-4">
+      <li><a href="index.html" class="block text-black hover:bg-gray-100 px-4 py-2 transition">Home</a></li>
+      <li><a href="amenities.html" class="block text-black hover:bg-gray-100 px-4 py-2 transition">Amenities</a></li>
+      <li><a href="accommodations.html" class="block text-black hover:bg-gray-100 px-4 py-2 transition">Accommodations</a></li>
+      <li><a href="contact.html" class="block text-black hover:bg-gray-100 px-4 py-2 transition">Contact</a></li>
+      <!-- Mobile "Book Now" Button -->
+      <li>
+        <a href="book.html" class="block text-center bg-blue-600 text-white font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition">
+          Book Now
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+  <!-- JavaScript for Navbar Animation, Active Link Highlight & Mobile Menu -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const navbar = document.getElementById("navbar");
+      const navToggle = document.getElementById("nav-toggle");
+      const closeMenu = document.getElementById("close-menu");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const navLinks = document.querySelectorAll(".nav-link");
+  
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        if (window.scrollY > 50) {
+          navbar.classList.add("py-2", "shadow-lg", "bg-white");
+          navbar.classList.remove("py-4");
+        } else {
+          navbar.classList.add("py-4");
+          navbar.classList.remove("py-2", "shadow-lg", "bg-white");
+        }
+      });
+  
+      // Open Mobile Menu
+      navToggle.addEventListener("click", function () {
+        mobileMenu.classList.remove("translate-x-full");
+        mobileMenu.classList.add("translate-x-0");
+      });
+  
+      // Close Mobile Menu
+      closeMenu.addEventListener("click", function () {
+        mobileMenu.classList.add("translate-x-full");
+        mobileMenu.classList.remove("translate-x-0");
+      });
+  
+      // Active Link Highlight
+      function setActiveLink() {
+        const currentPath = window.location.pathname.split("/").pop();
+        navLinks.forEach(link => {
+          if (link.getAttribute("href") === currentPath) {
+            link.classList.add("active-link");
+          } else {
+            link.classList.remove("active-link");
+          }
+        });
+      }
+  
+      setActiveLink();
+    });
+  </script>
+  
+  <!-- CSS for Active Link Underline -->
+  <style>
+    .nav-link::after {
+      content: "";
+      display: block;
+      height: 3px;
+      width: 0;
+      background-color: #007BFF;
+      transition: width 0.3s ease-in-out;
+      position: absolute;
+      left: 50%;
+      bottom: -5px;
+      transform: translateX(-50%);
+    }
+  
+    .nav-link:hover::after,
+    .nav-link.active-link::after {
+      width: 100%;
+    }
+  </style>
+  
+
+  
+  <!-- Hero Section with Photo Background -->
+  <section class="relative w-full h-screen overflow-hidden">
+    <!-- Image Carousel -->
+    <div class="carousel">
+        <img src="tours.webp" class="active" alt="Slide 1">
+    </div>
+    <div class="absolute inset-0 bg-black opacity-50"></div>
+    
+    <!-- Hero Content -->
+    <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 fade-in-text">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">Amenities & Activities</h1>
+        <p class="text-lg sm:text-xl md:text-2xl text-white mb-8">Elevate your Stay</p>
+        <a href="book.html" class="mt-6 inline-block px-6 py-3 bg-blue-600 text-white text-lg font-medium rounded-full shadow-md hover:bg-blue-700 transition">
+            Book Now
+          </a>
+    </div>
+</section>
+
+
+<script>
+    // Smooth Image Transition Carousel
+    const images = document.querySelectorAll(".carousel img");
+    let index = 0;
+
+    function slideImages() {
+        images.forEach((img, i) => img.classList.remove("active"));
+        images[index].classList.add("active");
+        index = (index + 1) % images.length;
+    }
+
+    setInterval(slideImages, 4000); // Change image every 4 seconds
+
+    // Smooth scrolling for the "Get Started" button
+    document.querySelector(".smooth-scroll").addEventListener("click", function (e) {
+        e.preventDefault();
+        document.querySelector("#content").scrollIntoView({ behavior: "smooth" });
+    });
+</script>
+
+
+<section id="content" class="text-center mb-8 pt-20">
+    <h3 class="text-4xl font-bold text-gray-800 fade-in">Thrills Await</h3><br>
+    <p class="text-lg text-gray-600 fade-in">Escape, Explore, Experience.</p>
+
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto pt-10">
+    <!-- Room 1 -->
+    <div class="room-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
+        <img src="swim.webp" class="w-full h-56 object-cover" alt="Room Image">
+        <div class="p-6">
+            <h3 class="text-xl font-bold">Swim</h3>
+            <p class="text-gray-600">Dive into relaxation.</p>
+            <div class="flex flex-wrap gap-2 mt-3 justify-center">
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Jacuzzi & Hot Tub</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Private Poolside Loungery</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm"> Spacious Pool Area</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Room 2 -->
+    <div class="room-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
+        <img src="tours2.jpg" class="w-full h-56 object-cover" alt="Room Image">
+        <div class="p-6">
+            <h3 class="text-xl font-bold">Ride & Tour</h3>
+            <p class="text-gray-600">Adventure on Wheels.</p>
+            <div class="flex flex-wrap gap-2 mt-3 justify-center">
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">ATV Off-Road Adventure</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Motorbike Rentals</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Golf Cart Rentals</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Room 3 -->
+    <div class="room-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
+        <img src="horse.webp" class="w-full h-56 object-cover" alt="Room Image">
+        <div class="p-6">
+            <h3 class="text-xl font-bold">Horse Visit & Ride</h3>
+            <p class="text-gray-600"> Beauty of Equestrian Life.</p>
+            <div class="flex flex-wrap gap-2 mt-3 justify-center">
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Guided Horseback Rides</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Meet & Greet with Horses</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Beginner-Friendly Sessions</span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Room 4 -->
+    <div class="room-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
+        <img src="explo.webp" class="w-full h-56 object-cover" alt="Room Image">
+        <div class="p-6">
+            <h3 class="text-xl font-bold">Expedition</h3>
+            <p class="text-gray-600">Journey Beyond the Ordinary.</p>
+            <div class="flex flex-wrap gap-2 mt-3 justify-center">
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Off-the-Beaten-Path Adventures</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Eco-Tours</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="flex justify-center pb-10">
+    <a href="contact.html" class="bg-blue-600 text-white font-semibold px-6 py-2.5 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 ease-in-out fade-in">
+        Reach Out
+    </a>
+</div>
+
+<style>
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const fadeInElements = document.querySelectorAll(".fade-in");
+
+        function handleScroll() {
+            fadeInElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.9) {
+                    el.classList.add("visible");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", handleScroll);
+        handleScroll(); // Run initially in case it's already in view
+    });
+</script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const roomCards = document.querySelectorAll(".room-card");
+    
+        const observer = new IntersectionObserver(
+            (entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("animate-fadeInUp");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.2 }
+        );
+    
+        roomCards.forEach((card) => observer.observe(card));
+    });
+    </script>
+    
+    <style>
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .animate-fadeInUp {
+        animation: fadeInUp 0.8s ease-out forwards;
+    }
+    </style>
+
+
+<section class="text-center pt-20 px-4 pb-20 bg-[#F5F5F5]">
+    <h5 class="text-3xl font-bold text-gray-800 mb-6 fade-in opacity-0 translate-y-5">
+        Things to do, ways to relax.
+    </h5>
+    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white shadow-lg p-6 rounded-lg border border-gray-200 fade-in opacity-0 translate-y-5">
+            <div class="flex justify-center mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 20h18M4 20V10c0-3.87 3.13-7 7-7s7 3.13 7 7v10"/>
+                </svg>
+            </div>
+            <h6 class="text-xl font-semibold text-gray-800 mb-2">Garden</h6>
+            <p class="text-gray-600">Beautifully furnished spaces with a touch of sophistication and comfort.</p>
+        </div>
+
+        <div class="bg-white shadow-lg p-6 rounded-lg border border-gray-200 fade-in opacity-0 translate-y-5">
+            <div class="flex justify-center mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 20h16M3 20v-8l7-4 7 4v8"/>
+                </svg>
+            </div>
+            <h6 class="text-xl font-semibold text-gray-800 mb-2">Hiking</h6>
+            <p class="text-gray-600">Wake up to stunning surroundings and unwind in a peaceful atmosphere.</p>
+        </div>
+
+        <div class="bg-white shadow-lg p-6 rounded-lg border border-gray-200 fade-in opacity-0 translate-y-5">
+            <div class="flex justify-center mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-yellow-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 18h6M12 2s3 2 3 5c0 2-2 5-3 5s-3-3-3-5c0-3 3-5 3-5zM3 10h18M3 14h18"/>
+                </svg>
+            </div>
+            <h6 class="text-xl font-semibold text-gray-800 mb-2">Massage</h6>
+            <p class="text-gray-600">Relax and rejuvenate with a soothing massage experience.</p>
+        </div>
+
+        <div class="bg-white shadow-lg p-6 rounded-lg border border-gray-200 fade-in opacity-0 translate-y-5">
+            <div class="flex justify-center mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-pink-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 20h12M4 20v-4a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v4"/>
+                </svg>
+            </div>
+            <h6 class="text-xl font-semibold text-gray-800 mb-2">Spa</h6>
+            <p class="text-gray-600">Experience ultimate relaxation with our luxury spa treatments.</p>
+        </div>
+
+        <div class="bg-white shadow-lg p-6 rounded-lg border border-gray-200 fade-in opacity-0 translate-y-5">
+            <div class="flex justify-center mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 21h18M5 21V3h14v18M8 6h8"/>
+                </svg>
+            </div>
+            <h6 class="text-xl font-semibold text-gray-800 mb-2">Sauna</h6>
+            <p class="text-gray-600">Enjoy the warmth and health benefits of our premium sauna.</p>
+        </div>
+
+        <div class="bg-white shadow-lg p-6 rounded-lg border border-gray-200 fade-in opacity-0 translate-y-5">
+            <div class="flex justify-center mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2s4 6 4 9a4 4 0 1 1-8 0c0-3 4-9 4-9zM6 21h12M6 17h12"/>
+                </svg>
+            </div>
+            <h6 class="text-xl font-semibold text-gray-800 mb-2">Tour</h6>
+            <p class="text-gray-600">Discover new places with our guided tour services.</p>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const elements = document.querySelectorAll(".fade-in");
+    
+        function revealElements() {
+            elements.forEach((el) => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) {
+                    el.classList.add("opacity-100", "translate-y-0", "transition-all", "duration-1000");
+                    el.classList.remove("opacity-0", "translate-y-5");
+                }
+            });
+        }
+    
+        window.addEventListener("scroll", revealElements);
+        revealElements(); // Initial check in case elements are already in view
+    });
+</script>
+
+
+<style>
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<section class="text-center pt-20 px-4 pb-20 bg-white">
+    <h5 class="text-3xl font-bold text-gray-800 mb-6 fade-in opacity-0 translate-y-5">
+        Services
+    </h5>
+    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Breakfast [Continental] -->
+        <div class="bg-white shadow-lg p-6 rounded-lg border border-gray-200 fade-in opacity-0 translate-y-5">
+            <div class="flex justify-center mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-yellow-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16M4 10h16M4 16h16"/>
+                </svg>
+            </div>
+            <h6 class="text-xl font-semibold text-gray-800 mb-2">Breakfast (Continental)</h6>
+            <p class="text-gray-600">Enjoy a selection of fresh pastries, fruits, and beverages.</p>
+        </div>
+
+        <!-- Breakfast [Free] -->
+        <div class="bg-white shadow-lg p-6 rounded-lg border border-gray-200 fade-in opacity-0 translate-y-5">
+            <div class="flex justify-center mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2s3 3 3 6a3 3 0 1 1-6 0c0-3 3-6 3-6zM4 20h16M6 16h12"/>
+                </svg>
+            </div>
+            <h6 class="text-xl font-semibold text-gray-800 mb-2">Breakfast (Free)</h6>
+            <p class="text-gray-600">Start your day with a complimentary breakfast selection.</p>
+        </div>
+
+        <!-- Coffee Shop -->
+        <div class="bg-white shadow-lg p-6 rounded-lg border border-gray-200 fade-in opacity-0 translate-y-5">
+            <div class="flex justify-center mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-brown-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 10h18M8 10V3h8v7M4 20h16"/>
+                </svg>
+            </div>
+            <h6 class="text-xl font-semibold text-gray-800 mb-2">Coffee Shop</h6>
+            <p class="text-gray-600">Enjoy freshly brewed coffee and delicious pastries.</p>
+        </div>
+
+        <div class="bg-white shadow-lg p-6 rounded-lg border border-gray-200 fade-in opacity-0 translate-y-5">
+            <div class="flex justify-center mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12.55a11 11 0 0 1 14 0M1.42 9A16 16 0 0 1 22.58 9M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/>
+                </svg>
+            </div>
+            <h6 class="text-xl font-semibold text-gray-800 mb-2">Internet</h6>
+            <p class="text-gray-600">Enjoy high-speed Wi-Fi access throughout the property.</p>
+        </div>
+        <!-- Restaurants -->
+        <div class="bg-white shadow-lg p-6 rounded-lg border border-gray-200 fade-in opacity-0 translate-y-5">
+            <div class="flex justify-center mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 20h12M4 20v-8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8"/>
+                </svg>
+            </div>
+            <h6 class="text-xl font-semibold text-gray-800 mb-2">Restaurants</h6>
+            <p class="text-gray-600">Savor delicious meals with a variety of cuisines.</p>
+        </div>
+
+        <!-- Room Service -->
+        <div class="bg-white shadow-lg p-6 rounded-lg border border-gray-200 fade-in opacity-0 translate-y-5">
+            <div class="flex justify-center mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 21h18M5 21V3h14v18M8 6h8"/>
+                </svg>
+            </div>
+            <h6 class="text-xl font-semibold text-gray-800 mb-2">Room Service</h6>
+            <p class="text-gray-600">Order delicious meals delivered straight to your room.</p>
+        </div>
+
+    </div>
+</section>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const elements = document.querySelectorAll(".fade-in");
+    
+        function revealElements() {
+            elements.forEach((el) => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) {
+                    el.classList.add("opacity-100", "translate-y-0", "transition-all", "duration-1000");
+                    el.classList.remove("opacity-0", "translate-y-5");
+                }
+            });
+        }
+    
+        window.addEventListener("scroll", revealElements);
+        revealElements(); // Initial check in case elements are already in view
+    });
+</script>
+
+
+<style>
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+  
+<footer
+  id="footer"
+  class="relative text-white text-center py-8 sm:py-10 md:py-12 transition-all duration-500 ease-in-out bg-no-repeat bg-cover bg-center"
+  style="background-image: url('footer2.jpg'); transition: padding 0.5s ease, opacity 0.5s ease; opacity: 0.5;"
+>
+  <!-- Optional Dark Overlay for Better Text Contrast -->
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+
+  <div class="relative container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Left Column: Brand & Tagline -->
+      <div class="flex flex-col items-center md:items-start">
+        <a href="#" class="flex items-center mb-4">
+          <img src="logo2.png" alt="Residencia del Hamor Logo" class="h-10 w-auto mr-2">
+          <span class="text-xl font-semibold">Residencia del Hamor</span>
+        </a>
+        <p class="text-gray-200 max-w-xs text-center md:text-left">
+          Your serene nature retreat in Casiguran, Sorsogon. Relax amidst lush greenery and breathtaking landscapes.
+        </p>
+      </div>
+      
+      <!-- Middle Column: Quick Links (Centered Text) -->
+      <div class="text-center">
+        <h3 class="text-lg font-semibold mb-3">Explore</h3>
+        <ul class="space-y-2 text-sm sm:text-base">
+          <li><a href="index.html" class="text-gray-200 hover:text-white transition">Home</a></li>
+          <li><a href="accommodations.html" class="text-gray-200 hover:text-white transition">Accommodations</a></li>
+          <li><a href="amenities.html" class="text-gray-200 hover:text-white transition">Amenities</a></li>
+          <li><a href="book.html" class="text-gray-200 hover:text-white transition">Book Now</a></li>
+          <li><a href="contact.html" class="text-gray-200 hover:text-white transition">Contact</a></li>
+        </ul>
+      </div>
+      
+      <!-- Right Column: Contact & Social -->
+      <div class="text-center md:text-right">
+        <h3 class="text-lg font-semibold mb-3">Connect With Us</h3>
+        <p class="text-gray-200 text-sm sm:text-base">Inlagadian, Casiguran, Sorsogon, Philippines</p>
+        <p class="text-gray-200 text-sm sm:text-base">
+          Email: 
+          <a href="mailto:contact@residenciadelhamor.com" class="hover:text-white transition">
+            contact@residenciadelhamor.com
+          </a>
+        </p>
+        <p class="text-gray-200 text-sm sm:text-base">Phone: +63 912 345 6789</p>
+        <!-- Social Media Links -->
+        <div class="flex justify-center md:justify-end space-x-4 mt-4">
+          <a href="#" class="text-gray-200 hover:text-white transition">
+            <i class="fa-brands fa-facebook fa-lg"></i>
+          </a>
+          <a href="#" class="text-gray-200 hover:text-white transition">
+            <i class="fa-brands fa-instagram fa-lg"></i>
+          </a>
+          <a href="#" class="text-gray-200 hover:text-white transition">
+            <i class="fa-brands fa-twitter fa-lg"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Footer Bottom -->
+    <div class="border-t border-gray-500 mt-8 pt-4">
+      <p class="text-gray-200 text-xs sm:text-sm">
+        © 2025 Residencia Del Hamor. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- JavaScript for Scroll Fade and Padding Adjustment -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const footer = document.getElementById("footer");
+
+    function handleScroll() {
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const footerPosition = document.body.offsetHeight - 100;
+      
+      if (scrollPosition >= footerPosition) {
+        footer.style.paddingTop = "50px";
+        footer.style.paddingBottom = "50px";
+        footer.style.opacity = "1";
+      } else {
+        footer.style.paddingTop = "40px";
+        footer.style.paddingBottom = "40px";
+        footer.style.opacity = "0.5";
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+  });
+</script>
+
+
+
+  
+</body>
+</html>

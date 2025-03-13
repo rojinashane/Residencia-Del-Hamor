@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="src./output.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Residencia Del Hamor|Accommodations</title>
+  <style>
+    /* Define the animation for text */
+    @keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  opacity: 0; /* Ensures the text remains hidden initially */
+  animation: fadeInUp 1.2s ease-out forwards;
+}
+
+.carousel {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+        .carousel img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        .carousel img.active {
+            opacity: 1;
+        }
+        /* Fade-in effect for text */
+        .fade-in-text {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out forwards 0.5s;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .room-card:hover img {
+            transform: scale(1.1);
+        }
+        .room-card img {
+            transition: transform 0.3s ease-in-out;
+        }
+  </style>
+</head>
+<body>
+  
+ <!-- Sticky Navigation Bar -->
+<!-- Sticky Navigation Bar -->
+<nav id="navbar" class="sticky top-0 z-50 bg-[#F5F5F5] shadow-md transition-all duration-500 ease-in-out">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4 transition-all duration-500">
+        
+        <!-- Logo & Brand Name -->
+        <a href="#" class="flex items-center">
+          <img src="logo.png" alt="Logo" class="h-10 w-auto mr-3" />
+          <span class="text-black text-xl md:text-2xl">Residencia Del Hamor</span>
+        </a>
+  
+        <!-- Desktop Menu + Book Now Button -->
+        <div class="hidden md:flex items-center space-x-6 relative">
+          <ul class="flex space-x-6 relative" id="nav-links">
+            <li><a href="index.html" class="nav-link text-black hover:text-gray-400 transition relative">Home</a></li>
+            <li><a href="amenities.html" class="nav-link text-black hover:text-gray-400 transition relative">Amenities</a></li>
+            <li><a href="accommodations.html" class="nav-link text-black hover:text-gray-400 transition relative">Accommodations</a></li>
+            <li><a href="contact.html" class="nav-link text-black hover:text-gray-400 transition relative">Contact</a></li>
+          </ul>
+          <!-- Highlighted Book Now Button -->
+          <a href="book.html" class="bg-blue-600 text-white font-semibold px-5 py-2 rounded-full shadow-lg hover:bg-blue-700 transition">
+            Book Now
+          </a>
+        </div>
+  
+        <!-- Mobile Menu Button -->
+        <button id="nav-toggle" class="md:hidden text-black focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor"  
+            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                  d="M4 8h16M4 16h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Mobile Sidebar Menu -->
+  <div id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-50 transform translate-x-full md:hidden transition-transform duration-300 ease-in-out">
+    <!-- Close Button -->
+    <button id="close-menu" class="p-4 text-black focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  
+    <!-- Mobile Navigation Links -->
+    <ul class="flex flex-col space-y-4 p-4">
+      <li><a href="index.html" class="block text-black hover:bg-gray-100 px-4 py-2 transition">Home</a></li>
+      <li><a href="amenities.html" class="block text-black hover:bg-gray-100 px-4 py-2 transition">Amenities</a></li>
+      <li><a href="accommodations.html" class="block text-black hover:bg-gray-100 px-4 py-2 transition">Accommodations</a></li>
+      <li><a href="contact.html" class="block text-black hover:bg-gray-100 px-4 py-2 transition">Contact</a></li>
+      <!-- Mobile "Book Now" Button -->
+      <li>
+        <a href="book.html" class="block text-center bg-blue-600 text-white font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition">
+          Book Now
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+  <!-- JavaScript for Navbar Animation, Active Link Highlight & Mobile Menu -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const navbar = document.getElementById("navbar");
+      const navToggle = document.getElementById("nav-toggle");
+      const closeMenu = document.getElementById("close-menu");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const navLinks = document.querySelectorAll(".nav-link");
+  
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        if (window.scrollY > 50) {
+          navbar.classList.add("py-2", "shadow-lg", "bg-white");
+          navbar.classList.remove("py-4");
+        } else {
+          navbar.classList.add("py-4");
+          navbar.classList.remove("py-2", "shadow-lg", "bg-white");
+        }
+      });
+  
+      // Open Mobile Menu
+      navToggle.addEventListener("click", function () {
+        mobileMenu.classList.remove("translate-x-full");
+        mobileMenu.classList.add("translate-x-0");
+      });
+  
+      // Close Mobile Menu
+      closeMenu.addEventListener("click", function () {
+        mobileMenu.classList.add("translate-x-full");
+        mobileMenu.classList.remove("translate-x-0");
+      });
+  
+      // Active Link Highlight
+      function setActiveLink() {
+        const currentPath = window.location.pathname.split("/").pop();
+        navLinks.forEach(link => {
+          if (link.getAttribute("href") === currentPath) {
+            link.classList.add("active-link");
+          } else {
+            link.classList.remove("active-link");
+          }
+        });
+      }
+  
+      setActiveLink();
+    });
+  </script>
+  
+  <!-- CSS for Active Link Underline -->
+  <style>
+    .nav-link::after {
+      content: "";
+      display: block;
+      height: 3px;
+      width: 0;
+      background-color: #007BFF;
+      transition: width 0.3s ease-in-out;
+      position: absolute;
+      left: 50%;
+      bottom: -5px;
+      transform: translateX(-50%);
+    }
+  
+    .nav-link:hover::after,
+    .nav-link.active-link::after {
+      width: 100%;
+    }
+  </style>
+  
+  
+  <!-- Hero Section with Photo Background -->
+  <section class="relative w-full h-screen overflow-hidden">
+    <!-- Image Carousel -->
+    <div class="carousel">
+        <img src="deluxe2.webp" class="active" alt="Slide 1">
+        <img src="standard.jpeg" alt="Slide 2">
+        <img src="duplex2.webp" alt="Slide 3">
+    </div>
+    <div class="absolute inset-0 bg-black opacity-50"></div>
+    
+    <!-- Hero Content -->
+    <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 fade-in-text">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">Our Accommodations</h1>
+        <p class="text-lg sm:text-xl md:text-2xl text-white mb-8">Experience Luxury</p>
+        <a href="book.html" class="mt-6 inline-block px-6 py-3 bg-blue-600 text-white text-lg font-medium rounded-full shadow-md hover:bg-blue-700 transition">
+            Book Now
+          </a>
+    </div>
+</section>
+
+
+<script>
+    // Smooth Image Transition Carousel
+    const images = document.querySelectorAll(".carousel img");
+    let index = 0;
+
+    function slideImages() {
+        images.forEach((img, i) => img.classList.remove("active"));
+        images[index].classList.add("active");
+        index = (index + 1) % images.length;
+    }
+
+    setInterval(slideImages, 4000); // Change image every 4 seconds
+
+    // Smooth scrolling for the "Get Started" button
+    document.querySelector(".smooth-scroll").addEventListener("click", function (e) {
+        e.preventDefault();
+        document.querySelector("#content").scrollIntoView({ behavior: "smooth" });
+    });
+</script>
+
+
+<section id="content" class="text-center mb-8 pt-20">
+    <h3 class="text-4xl font-bold text-gray-800">Explore Our Rooms</h3><br>
+    <p class="text-lg text-gray-600">Comfortable and affordable options designed for your perfect getaway.</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto pt-10">
+    <!-- Room 1 -->
+    <div class="room-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
+        <img src="suite2.webp" class="w-full h-56 object-cover" alt="Room Image">
+        <div class="p-6">
+            <h3 class="text-xl font-bold">Suite Room</h3>
+            <p class="text-gray-600">Experience the pinnacle of comfort and elegance.</p>
+            <div class="flex flex-wrap gap-2 mt-3 justify-center">
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Garden view</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">2 Queen Bed</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Air Conditioning</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Free WiFi</span>
+            </div>
+            <p class="text-blue-600 font-bold text-lg mt-4 pb-5">₱2599/night</p>
+        </div>
+    </div>
+
+    <div class="room-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
+      <img src="duplex2.webp" class="w-full h-56 object-cover" alt="Room Image">
+      <div class="p-6">
+          <h3 class="text-xl font-bold">Duplex Room</h3>
+          <p class="text-gray-600">A unique blend of space and sophistication..</p>
+          <div class="flex flex-wrap gap-2 mt-3 justify-center">
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Pool view</span>
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Balcony/terrace</span>
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Garden view</span>
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Shower</span>
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">1 Queen Bed</span>
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Air Conditioning</span>
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Free WiFi</span>
+          </div>
+          <p class="text-blue-600 font-bold text-lg mt-4 pb-5">₱2077/night</p>
+      </div>
+  </div>
+
+
+    <div class="room-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
+        <img src="deluxe2.webp" class="w-full h-56 object-cover" alt="Room Image">
+        <div class="p-6">
+            <h3 class="text-xl font-bold">Deluxe Room</h3>
+            <p class="text-gray-600">A perfect blend of elegance and modern convenience.</p>
+            <div class="flex flex-wrap gap-2 mt-3 justify-center">
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Pool view</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Balcony/terrace</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Garden view</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">1 Queen Bed</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Air Conditioning</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Free WiFi</span>
+            </div>
+            <p class="text-blue-600 font-bold text-lg mt-4 pb-5">₱1598/night</p>
+        </div>
+    </div>
+
+    <div class="room-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
+        <img src="standard.jpeg" class="w-full h-56 object-cover" alt="Room Image">
+        <div class="p-6">
+            <h3 class="text-xl font-bold">Standard Room</h3>
+            <p class="text-gray-600">A relaxing and hassle-free stay.</p>
+            <div class="flex flex-wrap gap-2 mt-3 justify-center">
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Balcony/terrace</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Garden view</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">1 Queen Bed</span>
+            </div>
+            <p class="text-blue-600 font-bold text-lg mt-4 pb-5">₱1298/night</p>
+        </div>
+    </div>
+</section>
+
+<div class="flex justify-center pb-10">
+    <a href="book.html" class="bg-blue-600 text-white font-semibold px-6 py-2.5 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 ease-in-out fade-in">
+        Book Now
+    </a>
+</div>
+
+<style>
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const fadeInElements = document.querySelectorAll(".fade-in");
+
+        function handleScroll() {
+            fadeInElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.9) {
+                    el.classList.add("visible");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", handleScroll);
+        handleScroll(); // Run initially in case it's already in view
+    });
+</script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const roomCards = document.querySelectorAll(".room-card");
+    
+        const observer = new IntersectionObserver(
+            (entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("animate-fadeInUp");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.2 }
+        );
+    
+        roomCards.forEach((card) => observer.observe(card));
+    });
+    </script>
+    
+    <style>
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .animate-fadeInUp {
+        animation: fadeInUp 0.8s ease-out forwards;
+    }
+    </style>
+
+<section class="text-center pt-20 px-4 pb-20 bg-[#F5F5F5]">
+    <h5 class="text-3xl font-bold text-gray-800 mb-6 fade-in opacity-0 translate-y-5">
+        Stay in Comfort & Elegance
+    </h5>
+    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white shadow-lg p-6 rounded-lg border border-gray-200 fade-in opacity-0 translate-y-5">
+            <h6 class="text-xl font-semibold text-gray-800 mb-2">Elegant & Spacious Rooms</h6>
+            <p class="text-gray-600">Beautifully furnished spaces with a touch of sophistication and comfort.</p>
+        </div>
+        <div class="bg-white shadow-lg p-6 rounded-lg border border-gray-200 fade-in opacity-0 translate-y-5">
+            <h6 class="text-xl font-semibold text-gray-800 mb-2">Scenic Views & Tranquil Ambiance</h6>
+            <p class="text-gray-600">Wake up to stunning surroundings and unwind in a peaceful atmosphere.</p>
+        </div>
+        <div class="bg-white shadow-lg p-6 rounded-lg border border-gray-200 fade-in opacity-0 translate-y-5">
+            <h6 class="text-xl font-semibold text-gray-800 mb-2">Seamless Comfort</h6>
+            <p class="text-gray-600">Thoughtful details, from cozy lighting to well-appointed interiors, ensure a home-away-from-home feel.</p>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const elements = document.querySelectorAll(".fade-in");
+    
+        function revealElements() {
+            elements.forEach((el) => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) {
+                    el.classList.add("opacity-100", "translate-y-0", "transition-all", "duration-1000");
+                    el.classList.remove("opacity-0", "translate-y-5");
+                }
+            });
+        }
+    
+        window.addEventListener("scroll", revealElements);
+        revealElements(); // Initial check in case elements are already in view
+    });
+</script>
+
+<style>
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+  
+<footer
+  id="footer"
+  class="relative text-white text-center py-8 sm:py-10 md:py-12 transition-all duration-500 ease-in-out bg-no-repeat bg-cover bg-center"
+  style="background-image: url('footer2.jpg'); transition: padding 0.5s ease, opacity 0.5s ease; opacity: 0.5;"
+>
+  <!-- Optional Dark Overlay for Better Text Contrast -->
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+
+  <div class="relative container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Left Column: Brand & Tagline -->
+      <div class="flex flex-col items-center md:items-start">
+        <a href="#" class="flex items-center mb-4">
+          <img src="logo2.png" alt="Residencia del Hamor Logo" class="h-10 w-auto mr-2">
+          <span class="text-xl font-semibold">Residencia del Hamor</span>
+        </a>
+        <p class="text-gray-200 max-w-xs text-center md:text-left">
+          Your serene nature retreat in Casiguran, Sorsogon. Relax amidst lush greenery and breathtaking landscapes.
+        </p>
+      </div>
+      
+      <!-- Middle Column: Quick Links (Centered Text) -->
+      <div class="text-center">
+        <h3 class="text-lg font-semibold mb-3">Explore</h3>
+        <ul class="space-y-2 text-sm sm:text-base">
+          <li><a href="index.html" class="text-gray-200 hover:text-white transition">Home</a></li>
+          <li><a href="accommodations.html" class="text-gray-200 hover:text-white transition">Accommodations</a></li>
+          <li><a href="amenities.html" class="text-gray-200 hover:text-white transition">Amenities</a></li>
+          <li><a href="book.html" class="text-gray-200 hover:text-white transition">Book Now</a></li>
+          <li><a href="contact.html" class="text-gray-200 hover:text-white transition">Contact</a></li>
+        </ul>
+      </div>
+      
+      <!-- Right Column: Contact & Social -->
+      <div class="text-center md:text-right">
+        <h3 class="text-lg font-semibold mb-3">Connect With Us</h3>
+        <p class="text-gray-200 text-sm sm:text-base">Inlagadian, Casiguran, Sorsogon, Philippines</p>
+        <p class="text-gray-200 text-sm sm:text-base">
+          Email: 
+          <a href="mailto:contact@residenciadelhamor.com" class="hover:text-white transition">
+            contact@residenciadelhamor.com
+          </a>
+        </p>
+        <p class="text-gray-200 text-sm sm:text-base">Phone: +63 912 345 6789</p>
+        <!-- Social Media Links -->
+        <div class="flex justify-center md:justify-end space-x-4 mt-4">
+          <a href="#" class="text-gray-200 hover:text-white transition">
+            <i class="fa-brands fa-facebook fa-lg"></i>
+          </a>
+          <a href="#" class="text-gray-200 hover:text-white transition">
+            <i class="fa-brands fa-instagram fa-lg"></i>
+          </a>
+          <a href="#" class="text-gray-200 hover:text-white transition">
+            <i class="fa-brands fa-twitter fa-lg"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Footer Bottom -->
+    <div class="border-t border-gray-500 mt-8 pt-4">
+      <p class="text-gray-200 text-xs sm:text-sm">
+        © 2025 Residencia Del Hamor. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- JavaScript for Scroll Fade and Padding Adjustment -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const footer = document.getElementById("footer");
+
+    function handleScroll() {
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const footerPosition = document.body.offsetHeight - 100;
+      
+      if (scrollPosition >= footerPosition) {
+        footer.style.paddingTop = "50px";
+        footer.style.paddingBottom = "50px";
+        footer.style.opacity = "1";
+      } else {
+        footer.style.paddingTop = "40px";
+        footer.style.paddingBottom = "40px";
+        footer.style.opacity = "0.5";
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+  });
+</script>
+
+  
+</body>
+</html>

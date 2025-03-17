@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="src./output.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
   <title>Residencia Del Hamor|Amenities</title>
   <style>
     /* Define the animation for text */
@@ -244,74 +246,55 @@
 </script>
 
 
-<section id="content" class="text-center mb-8 pt-20">
-    <h3 class="text-4xl font-bold text-gray-800 fade-in">Thrills Await</h3><br>
-    <p class="text-lg text-gray-600 fade-in">Escape, Explore, Experience.</p>
+<section id="content" class="text-center mb-8 pt-20 fade-in-carousel">
+  <h3 class="text-4xl font-bold text-gray-800 fade-in">Thrills Await</h3>
+  <br />
+  <p class="text-lg text-gray-600 fade-in">Escape, Explore, Experience.</p>
 
-
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto pt-10">
-    <!-- Room 1 -->
-    <div class="room-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
-        <img src="swim.webp" class="w-full h-56 object-cover" alt="Room Image">
+  <div class="swiper mySwiper max-w-6xl mx-auto pt-10 fade-in-carousel">
+    <div class="swiper-wrapper">
+      <!-- Slide 1 -->
+      <div class="swiper-slide room-card bg-white rounded-lg shadow-lg overflow-hidden fade-in">
+        <img src="swim.webp" class="w-full h-56 object-cover" alt="Swim" />
         <div class="p-6">
-            <h3 class="text-xl font-bold">Swim</h3>
-            <p class="text-gray-600">Dive into relaxation.</p>
-            <div class="flex flex-wrap gap-2 mt-3 justify-center">
-                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Jacuzzi & Hot Tub</span>
-                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Private Poolside Loungery</span>
-                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm"> Spacious Pool Area</span>
-            </div>
+          <h3 class="text-xl font-bold">Swim</h3>
+          <p class="text-gray-600">Dive into relaxation.</p>
         </div>
-    </div>
-
-    <!-- Room 2 -->
-    <div class="room-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
-        <img src="tours2.jpg" class="w-full h-56 object-cover" alt="Room Image">
+      </div>
+      
+      <!-- Slide 2 -->
+      <div class="swiper-slide room-card bg-white rounded-lg shadow-lg overflow-hidden fade-in">
+        <img src="tours2.jpg" class="w-full h-56 object-cover" alt="Ride & Tour" />
         <div class="p-6">
-            <h3 class="text-xl font-bold">Ride & Tour</h3>
-            <p class="text-gray-600">Adventure on Wheels.</p>
-            <div class="flex flex-wrap gap-2 mt-3 justify-center">
-                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">ATV Off-Road Adventure</span>
-                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Motorbike Rentals</span>
-                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Golf Cart Rentals</span>
-            </div>
+          <h3 class="text-xl font-bold">Ride & Tour</h3>
+          <p class="text-gray-600">Adventure on Wheels.</p>
         </div>
-    </div>
+      </div>
 
-    <!-- Room 3 -->
-    <div class="room-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
-        <img src="horse.webp" class="w-full h-56 object-cover" alt="Room Image">
+      <!-- Slide 3 -->
+      <div class="swiper-slide room-card bg-white rounded-lg shadow-lg overflow-hidden fade-in">
+        <img src="horse.webp" class="w-full h-56 object-cover" alt="Horse Ride" />
         <div class="p-6">
-            <h3 class="text-xl font-bold">Horse Visit & Ride</h3>
-            <p class="text-gray-600"> Beauty of Equestrian Life.</p>
-            <div class="flex flex-wrap gap-2 mt-3 justify-center">
-                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Guided Horseback Rides</span>
-                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Meet & Greet with Horses</span>
-                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Beginner-Friendly Sessions</span>
-            </div>
+          <h3 class="text-xl font-bold">Horse Visit & Ride</h3>
+          <p class="text-gray-600">Beauty of Equestrian Life.</p>
         </div>
-    </div>
+      </div>
 
-
-    <!-- Room 4 -->
-    <div class="room-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
-        <img src="explo.webp" class="w-full h-56 object-cover" alt="Room Image">
+      <!-- Slide 4 -->
+      <div class="swiper-slide room-card bg-white rounded-lg shadow-lg overflow-hidden fade-in">
+        <img src="explo.webp" class="w-full h-56 object-cover" alt="Expedition" />
         <div class="p-6">
-            <h3 class="text-xl font-bold">Expedition</h3>
-            <p class="text-gray-600">Journey Beyond the Ordinary.</p>
-            <div class="flex flex-wrap gap-2 mt-3 justify-center">
-                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Off-the-Beaten-Path Adventures</span>
-                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Eco-Tours</span>
-            </div>
+          <h3 class="text-xl font-bold">Expedition</h3>
+          <p class="text-gray-600">Journey Beyond the Ordinary.</p>
         </div>
+      </div>
     </div>
+    
+    <!-- Navigation buttons -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
 </section>
-
-<div class="flex justify-center pb-10">
-    <a href="contact.html" class="bg-blue-600 text-white font-semibold px-6 py-2.5 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 ease-in-out fade-in">
-        Reach Out
-    </a>
-</div>
 
 <style>
     .fade-in {
@@ -324,63 +307,55 @@
         opacity: 1;
         transform: translateY(0);
     }
+
+    .fade-in-carousel {
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+    .fade-in-carousel.visible {
+        opacity: 1;
+    }
 </style>
 
+<!-- Include Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const fadeInElements = document.querySelectorAll(".fade-in");
+  document.addEventListener("DOMContentLoaded", function () {
+    const fadeInElements = document.querySelectorAll(".fade-in, .fade-in-carousel");
 
-        function handleScroll() {
-            fadeInElements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.9) {
-                    el.classList.add("visible");
-                }
-            });
+    function handleScroll() {
+        fadeInElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.9) {
+                el.classList.add("visible");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Run initially in case it's already in view
+
+    new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      centeredSlides: true,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+      },
+      on: {
+        init: function () {
+          document.querySelector(".mySwiper").classList.add("visible");
         }
-
-        window.addEventListener("scroll", handleScroll);
-        handleScroll(); // Run initially in case it's already in view
+      }
     });
+  });
 </script>
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const roomCards = document.querySelectorAll(".room-card");
-    
-        const observer = new IntersectionObserver(
-            (entries, observer) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("animate-fadeInUp");
-                        observer.unobserve(entry.target);
-                    }
-                });
-            },
-            { threshold: 0.2 }
-        );
-    
-        roomCards.forEach((card) => observer.observe(card));
-    });
-    </script>
-    
-    <style>
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(50px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    .animate-fadeInUp {
-        animation: fadeInUp 0.8s ease-out forwards;
-    }
-    </style>
 
 
 <section class="text-center pt-20 px-4 pb-20 bg-[#F5F5F5]">

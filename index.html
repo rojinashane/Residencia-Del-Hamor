@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,165 +10,172 @@
   <style>
     /* Define the animation for text */
     @keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  50% {
-    opacity: 0.5;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in-up {
-  opacity: 0; /* Ensures the text remains hidden initially */
-  animation: fadeInUp 1.2s ease-out forwards;
-}
-  </style>
-</head>
-<body>
-  
- <!-- Sticky Navigation Bar -->
-<!-- Sticky Navigation Bar -->
-<nav id="navbar" class="sticky top-0 z-50 bg-[#F5F5F5] shadow-md transition-all duration-500 ease-in-out">
-  <div class="container mx-auto px-4">
-    <div class="flex items-center justify-between py-4 transition-all duration-500">
-      
-      <!-- Logo & Brand Name -->
-      <a href="#" class="flex items-center">
-        <img src="./src/logo.png" alt="Logo" class="h-10 w-auto mr-3" />
-        <span class="text-black text-xl md:text-2xl">Residencia Del Hamor</span>
-      </a>
-
-      <!-- Desktop Menu + Book Now Button -->
-      <div class="hidden md:flex items-center space-x-6 relative">
-        <ul class="flex space-x-6 relative" id="nav-links">
-          <li><a href="index.html" class="nav-link text-black hover:text-gray-400 transition relative">Home</a></li>
-          <li><a href="./src/amenities.html" class="nav-link text-black hover:text-gray-400 transition relative">Amenities</a></li>
-          <li><a href="./src/accommodations.html" class="nav-link text-black hover:text-gray-400 transition relative">Accommodations</a></li>
-          <li><a href="./src/contact.html" class="nav-link text-black hover:text-gray-400 transition relative">Contact</a></li>
-        </ul>
-        <!-- Highlighted Book Now Button -->
-        <a href="./src/book.html" class="bg-blue-600 text-white font-semibold px-5 py-2 rounded-full shadow-lg hover:bg-blue-700 transition">
-          Book Now
-        </a>
-      </div>
-
-      <!-- Mobile Menu Button -->
-      <button id="nav-toggle" class="md:hidden text-black focus:outline-none">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor"  
-          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                d="M4 8h16M4 16h16"></path>
-        </svg>
-      </button>
-    </div>
-  </div>
-</nav>
-
-<!-- Mobile Sidebar Menu -->
-<div id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-50 transform translate-x-full md:hidden transition-transform duration-300 ease-in-out">
-  <!-- Close Button -->
-  <button id="close-menu" class="p-4 text-black focus:outline-none">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-    </svg>
-  </button>
-
-  <!-- Mobile Navigation Links -->
-  <ul class="flex flex-col space-y-4 p-4">
-    <li><a href="index.html" class="block text-black hover:bg-gray-100 px-4 py-2 transition">Home</a></li>
-    <li><a href="./src/amenities.html" class="block text-black hover:bg-gray-100 px-4 py-2 transition">Amenities</a></li>
-    <li><a href="./src/accommodations.html" class="block text-black hover:bg-gray-100 px-4 py-2 transition">Accommodations</a></li>
-    <li><a href="./src/contact.html" class="block text-black hover:bg-gray-100 px-4 py-2 transition">Contact</a></li>
-    <!-- Mobile "Book Now" Button -->
-    <li>
-      <a href="./src/book.html" class="block text-center bg-blue-600 text-white font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition">
-        Book Now
-      </a>
-    </li>
-  </ul>
-</div>
-
-<!-- JavaScript for Navbar Animation, Active Link Highlight & Mobile Menu -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const navbar = document.getElementById("navbar");
-    const navToggle = document.getElementById("nav-toggle");
-    const closeMenu = document.getElementById("close-menu");
-    const mobileMenu = document.getElementById("mobile-menu");
-    const navLinks = document.querySelectorAll(".nav-link");
-
-    // Navbar scroll effect
-    window.addEventListener("scroll", function () {
-      if (window.scrollY > 50) {
-        navbar.classList.add("py-2", "shadow-lg", "bg-white");
-        navbar.classList.remove("py-4");
-      } else {
-        navbar.classList.add("py-4");
-        navbar.classList.remove("py-2", "shadow-lg", "bg-white");
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
       }
-    });
 
-    // Open Mobile Menu
-    navToggle.addEventListener("click", function () {
-      mobileMenu.classList.remove("translate-x-full");
-      mobileMenu.classList.add("translate-x-0");
-    });
+      50% {
+        opacity: 0.5;
+        transform: translateY(20px);
+      }
 
-    // Close Mobile Menu
-    closeMenu.addEventListener("click", function () {
-      mobileMenu.classList.add("translate-x-full");
-      mobileMenu.classList.remove("translate-x-0");
-    });
-
-    // Active Link Highlight
-    function setActiveLink() {
-      const currentPath = window.location.pathname.split("/").pop();
-      navLinks.forEach(link => {
-        if (link.getAttribute("href") === currentPath) {
-          link.classList.add("active-link");
-        } else {
-          link.classList.remove("active-link");
-        }
-      });
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    setActiveLink();
-  });
-</script>
+    .animate-fade-in-up {
+      opacity: 0;
+      /* Ensures the text remains hidden initially */
+      animation: fadeInUp 1.2s ease-out forwards;
+    }
 
-<!-- CSS for Active Link Underline -->
-<style>
-  .nav-link::after {
-    content: "";
-    display: block;
-    height: 3px;
-    width: 0;
-    background-color: #007BFF;
-    transition: width 0.3s ease-in-out;
-    position: absolute;
-    left: 50%;
-    bottom: -5px;
-    transform: translateX(-50%);
-  }
+    .nav-link::after {
+      content: "";
+      display: block;
+      height: 3px;
+      width: 0;
+      background-color: #007BFF;
+      transition: width 0.3s ease-in-out;
+      position: absolute;
+      left: 50%;
+      bottom: -5px;
+      transform: translateX(-50%);
+    }
 
-  .nav-link:hover::after,
-  .nav-link.active-link::after {
-    width: 100%;
-  }
-</style>
+    .nav-link:hover::after,
+    .nav-link.active-link::after {
+      width: 100%;
+    }
+  </style>
+</head>
 
-  
+<body>
+
+  <!-- Sticky Navigation Bar -->
+  <!-- Sticky Navigation Bar -->
+  <nav id="navbar" class="sticky top-0 z-50 bg-[#F5F5F5] shadow-md transition-all duration-500 ease-in-out">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4 transition-all duration-500">
+
+        <!-- Logo & Brand Name -->
+        <a href="#" class="flex items-center">
+          <img src="./src/logo.png" alt="Logo" class="h-10 w-auto mr-3" />
+          <span class="text-black text-xl md:text-2xl">Residencia Del Hamor</span>
+        </a>
+
+        <!-- Desktop Menu + Book Now Button -->
+        <div class="hidden md:flex items-center space-x-6 relative">
+          <ul class="flex space-x-6 relative" id="nav-links">
+            <li><a href="index.html" class="nav-link text-black hover:text-gray-400 transition relative">Home</a></li>
+            <li><a href="./src/amenities.html"
+                class="nav-link text-black hover:text-gray-400 transition relative">Amenities</a></li>
+            <li><a href="./src/accommodations.html"
+                class="nav-link text-black hover:text-gray-400 transition relative">Accommodations</a></li>
+            <li><a href="./src/contact.html"
+                class="nav-link text-black hover:text-gray-400 transition relative">Contact</a></li>
+          </ul>
+          <!-- Highlighted Book Now Button -->
+          <a href="./src/book.html"
+            class="bg-blue-600 text-white font-semibold px-5 py-2 rounded-full shadow-lg hover:bg-blue-700 transition">
+            Book Now
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="nav-toggle" class="md:hidden text-black focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Sidebar Menu -->
+  <div id="mobile-menu"
+    class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-50 transform translate-x-full md:hidden transition-transform duration-300 ease-in-out">
+    <!-- Close Button -->
+    <button id="close-menu" class="p-4 text-black focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+
+    <!-- Mobile Navigation Links -->
+    <ul class="flex flex-col space-y-4 p-4">
+      <li><a href="index.html" class="block text-black hover:bg-gray-100 px-4 py-2 transition">Home</a></li>
+      <li><a href="./src/amenities.html" class="block text-black hover:bg-gray-100 px-4 py-2 transition">Amenities</a>
+      </li>
+      <li><a href="./src/accommodations.html"
+          class="block text-black hover:bg-gray-100 px-4 py-2 transition">Accommodations</a></li>
+      <li><a href="./src/contact.html" class="block text-black hover:bg-gray-100 px-4 py-2 transition">Contact</a></li>
+      <!-- Mobile "Book Now" Button -->
+      <li>
+        <a href="./src/book.html"
+          class="block text-center bg-blue-600 text-white font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition">
+          Book Now
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- JavaScript for Navbar Animation, Active Link Highlight & Mobile Menu -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const navbar = document.getElementById("navbar");
+      const navToggle = document.getElementById("nav-toggle");
+      const closeMenu = document.getElementById("close-menu");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        if (window.scrollY > 50) {
+          navbar.classList.add("py-2", "shadow-lg", "bg-white");
+          navbar.classList.remove("py-4");
+        } else {
+          navbar.classList.add("py-4");
+          navbar.classList.remove("py-2", "shadow-lg", "bg-white");
+        }
+      });
+
+      // Open Mobile Menu
+      navToggle.addEventListener("click", function () {
+        mobileMenu.classList.remove("translate-x-full");
+        mobileMenu.classList.add("translate-x-0");
+      });
+
+      // Close Mobile Menu
+      closeMenu.addEventListener("click", function () {
+        mobileMenu.classList.add("translate-x-full");
+        mobileMenu.classList.remove("translate-x-0");
+      });
+
+      // Active Link Highlight
+      function setActiveLink() {
+        const currentPath = window.location.pathname.split("/").pop();
+        navLinks.forEach(link => {
+          if (link.getAttribute("href") === currentPath) {
+            link.classList.add("active-link");
+          } else {
+            link.classList.remove("active-link");
+          }
+        });
+      }
+
+      setActiveLink();
+    });
+  </script>
+
   <!-- Hero Section with Photo Background -->
-  <section class="relative w-full h-screen bg-cover bg-center fade-in-bg" style="background-image: url('./src/hero.webp');">
+  <section class="relative w-full h-screen bg-cover bg-center fade-in-bg"
+    style="background-image: url('./src/hero.webp');">
     <!-- Dark overlay for better text readability -->
     <div class="absolute inset-0 bg-black opacity-50"></div>
-    
+
     <!-- Hero content -->
     <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 fade-in-text">
       <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">
@@ -176,12 +184,13 @@
       <p class="text-lg sm:text-xl md:text-2xl text-white mb-8">
         A Sanctuary of Elegance & Tranquility Awaits You.
       </p>
-      <a href="./src/book.html" class="mt-6 inline-block px-6 py-3 bg-blue-600 text-white text-lg font-medium rounded-full shadow-md hover:bg-blue-700 transition">
+      <a href="./src/book.html"
+        class="mt-6 inline-block px-6 py-3 bg-blue-600 text-white text-lg font-medium rounded-full shadow-md hover:bg-blue-700 transition">
         Book Now
       </a>
     </div>
   </section>
-  
+
   <!-- CSS for Smooth Background Fade-in and Text Animation -->
   <style>
     /* Fade-in effect for the background */
@@ -189,28 +198,31 @@
       opacity: 0;
       animation: fadeIn 1.5s ease-out forwards;
     }
-  
+
     @keyframes fadeIn {
       from {
         opacity: 0;
       }
+
       to {
         opacity: 1;
       }
     }
-  
+
     /* Fade-in and move up effect for text */
     .fade-in-text {
       opacity: 0;
       transform: translateY(20px);
-      animation: fadeInUp 1s ease-out forwards 0.5s; /* 0.5s delay for smoother effect */
+      animation: fadeInUp 1s ease-out forwards 0.5s;
+      /* 0.5s delay for smoother effect */
     }
-  
+
     @keyframes fadeInUp {
       from {
         opacity: 0;
         transform: translateY(20px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -218,62 +230,68 @@
     }
 
     .room-card:hover img {
-            transform: scale(1.1);
-        }
-        .room-card img {
-            transition: transform 0.3s ease-in-out;
-        }
+      transform: scale(1.1);
+    }
+
+    .room-card img {
+      transition: transform 0.3s ease-in-out;
+    }
   </style>
-  
+
   <section class="relative w-full flex flex-col items-center py-10 bg-[#F5F5F5] pb-20">
     <!-- Title Above Carousel -->
     <h2 class="text-gray-800 text-3xl md:text-5xl font-bold pt-4 mb-6">Discover Paradise</h2>
-  
-    <!-- Carousel Container -->
-    <div class="w-4/5 md:w-3/5 lg:w-1/2 h-[400px] md:h-[500px] bg-white rounded-lg shadow-lg overflow-hidden opacity-0 transform translate-y-10 transition-all duration-1000 ease-out carousel-container">
-        
-        <!-- Carousel Wrapper -->
-        <div class="relative w-full h-full overflow-hidden rounded-lg">
-            <div class="carousel flex w-full h-full transition-transform duration-1000 ease-in-out">
-                <!-- Slide 1 -->
-                <div class="carousel-item min-w-full h-full relative flex items-center justify-center">
-                    <img src="./src/place2.webp" class="w-full h-full object-cover rounded-lg" />
-                    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
-                    <h3 class="absolute text-white text-2xl md:text-4xl font-semibold text-center px-4">Breathtaking Views</h3>
-                </div>
-  
-                <!-- Slide 2 -->
-                <div class="carousel-item min-w-full h-full relative flex items-center justify-center">
-                    <img src="./src/tours.webp" class="w-full h-full object-cover rounded-lg" />
-                    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
-                    <h3 class="absolute text-white text-2xl md:text-4xl font-semibold text-center px-4">Exciting Tours & Adventures</h3>
-                </div>
-  
-                <!-- Slide 3 -->
-                <div class="carousel-item min-w-full h-full relative flex items-center justify-center">
-                    <img src="./src/swim.webp" class="w-full h-full object-cover rounded-lg" />
-                    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
-                    <h3 class="absolute text-white text-2xl md:text-4xl font-semibold text-center px-4">Relax & Enjoy the Waters</h3>
-                </div>
-  
-                <!-- Slide 4 -->
-                <div class="carousel-item min-w-full h-full relative flex items-center justify-center">
-                    <img src="./src/hero3.webp" class="w-full h-full object-cover rounded-lg" />
-                    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
-                    <h3 class="absolute text-white text-2xl md:text-4xl font-semibold text-center px-4">Unforgettable Experiences Await</h3>
-                </div>
 
-                <!-- Slide 5 -->
-                <div class="carousel-item min-w-full h-full relative flex items-center justify-center">
-                  <img src="./src/horse.webp" class="w-full h-full object-cover rounded-lg" />
-                  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
-                  <h3 class="absolute text-white text-2xl md:text-4xl font-semibold text-center px-4">Gallop Through Paradise</h3>
-              </div>
-            </div>
+    <!-- Carousel Container -->
+    <div
+      class="w-4/5 md:w-3/5 lg:w-1/2 h-[400px] md:h-[500px] bg-white rounded-lg shadow-lg overflow-hidden opacity-0 transform translate-y-10 transition-all duration-1000 ease-out carousel-container">
+
+      <!-- Carousel Wrapper -->
+      <div class="relative w-full h-full overflow-hidden rounded-lg">
+        <div class="carousel flex w-full h-full transition-transform duration-1000 ease-in-out">
+          <!-- Slide 1 -->
+          <div class="carousel-item min-w-full h-full relative flex items-center justify-center">
+            <img src="./src/place2.webp" class="w-full h-full object-cover rounded-lg" />
+            <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+            <h3 class="absolute text-white text-2xl md:text-4xl font-semibold text-center px-4">Breathtaking Views</h3>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-item min-w-full h-full relative flex items-center justify-center">
+            <img src="./src/tours.webp" class="w-full h-full object-cover rounded-lg" />
+            <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+            <h3 class="absolute text-white text-2xl md:text-4xl font-semibold text-center px-4">Exciting Tours &
+              Adventures</h3>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="carousel-item min-w-full h-full relative flex items-center justify-center">
+            <img src="./src/swim.webp" class="w-full h-full object-cover rounded-lg" />
+            <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+            <h3 class="absolute text-white text-2xl md:text-4xl font-semibold text-center px-4">Relax & Enjoy the Waters
+            </h3>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="carousel-item min-w-full h-full relative flex items-center justify-center">
+            <img src="./src/hero3.webp" class="w-full h-full object-cover rounded-lg" />
+            <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+            <h3 class="absolute text-white text-2xl md:text-4xl font-semibold text-center px-4">Unforgettable
+              Experiences Await</h3>
+          </div>
+
+          <!-- Slide 5 -->
+          <div class="carousel-item min-w-full h-full relative flex items-center justify-center">
+            <img src="./src/horse.webp" class="w-full h-full object-cover rounded-lg" />
+            <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+            <h3 class="absolute text-white text-2xl md:text-4xl font-semibold text-center px-4">Gallop Through Paradise
+            </h3>
+          </div>
         </div>
+      </div>
     </div>
   </section>
-  
+
   <!-- JavaScript for Scroll Animation & Smooth Carousel -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -281,7 +299,7 @@
       const slides = document.querySelectorAll(".carousel-item");
       const container = document.querySelector(".carousel-container");
       let currentIndex = 0;
-  
+
       // Scroll Animation (Fade In)
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -292,229 +310,235 @@
           }
         });
       }, { threshold: 0.3 });
-  
+
       observer.observe(container);
-  
+
       // Auto-Sliding Carousel
       function nextSlide() {
         currentIndex = (currentIndex + 1) % slides.length;
         const offset = -currentIndex * 100;
         carousel.style.transform = `translateX(${offset}%)`;
       }
-  
+
       setInterval(nextSlide, 3000); // Auto-slide every 3 seconds
     });
   </script>
-  
+
   <section id="content" class="text-center mb-8 pt-20">
     <h3 class="text-4xl font-bold text-gray-800">Explore Our Rooms</h3><br>
     <p class="text-lg text-gray-600">Comfortable and affordable options designed for your perfect getaway.</p>
-</div>
-
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto pt-10">
-    <!-- Room 1 -->
-    <div class="room-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
-        <img src="./src/suite2.webp" class="w-full h-56 object-cover" alt="Room Image">
-        <div class="p-6">
-            <h3 class="text-xl font-bold">Suite Room</h3>
-            <p class="text-gray-600">Experience the pinnacle of comfort and elegance.</p>
-            <div class="flex flex-wrap gap-2 mt-3 justify-center">
-                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Garden view</span>
-                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">2 Queen Bed</span>
-                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Air Conditioning</span>
-                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Free WiFi</span>
-            </div>
-            <p class="text-blue-600 font-bold text-lg mt-4 pb-5">₱2599/night</p>
-        </div>
     </div>
 
-    <div class="room-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
-      <img src="./src/duplex2.webp" class="w-full h-56 object-cover" alt="Room Image">
-      <div class="p-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto pt-10">
+      <!-- Room 1 -->
+      <div
+        class="room-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
+        <img src="./src/suite2.webp" class="w-full h-56 object-cover" alt="Room Image">
+        <div class="p-6">
+          <h3 class="text-xl font-bold">Suite Room</h3>
+          <p class="text-gray-600">Experience the pinnacle of comfort and elegance.</p>
+          <div class="flex flex-wrap gap-2 mt-3 justify-center">
+            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Garden view</span>
+            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">2 Queen Bed</span>
+            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Air Conditioning</span>
+            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Free WiFi</span>
+          </div>
+          <p class="text-blue-600 font-bold text-lg mt-4 pb-5">₱2599/night</p>
+        </div>
+      </div>
+
+      <div
+        class="room-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
+        <img src="./src/duplex2.webp" class="w-full h-56 object-cover" alt="Room Image">
+        <div class="p-6">
           <h3 class="text-xl font-bold">Duplex Room</h3>
           <p class="text-gray-600">A unique blend of space and sophistication..</p>
           <div class="flex flex-wrap gap-2 mt-3 justify-center">
-              <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Pool view</span>
-              <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Balcony/terrace</span>
-              <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Garden view</span>
-              <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Shower</span>
-              <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">1 Queen Bed</span>
-              <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Air Conditioning</span>
-              <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Free WiFi</span>
+            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Pool view</span>
+            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Balcony/terrace</span>
+            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Garden view</span>
+            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Shower</span>
+            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">1 Queen Bed</span>
+            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Air Conditioning</span>
+            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Free WiFi</span>
           </div>
           <p class="text-blue-600 font-bold text-lg mt-4 pb-5">₱2077/night</p>
+        </div>
       </div>
+  </section>
+
+  <div class="flex justify-center pb-10">
+    <a href="./src/accommodations.html"
+      class="text-blue-600 font-semibold px-6 py-2.5 rounded-full hover:opacity-70 transition duration-300 ease-in-out fade-in">
+      Explore
+    </a>
   </div>
-</section>
-
-<div class="flex justify-center pb-10">
-  <a href="./src/accommodations.html" class="text-blue-600 font-semibold px-6 py-2.5 rounded-full hover:opacity-70 transition duration-300 ease-in-out fade-in">
-    Explore
-  </a>
-</div>
 
 
-<style>
+  <style>
     .fade-in {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 1s ease-out, transform 1s ease-out;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
     }
 
     .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const fadeInElements = document.querySelectorAll(".fade-in");
+
+      function handleScroll() {
+        fadeInElements.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 0.9) {
+            el.classList.add("visible");
+          }
+        });
+      }
+
+      window.addEventListener("scroll", handleScroll);
+      handleScroll(); // Run initially in case it's already in view
+    });
+  </script>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const roomCards = document.querySelectorAll(".room-card");
+
+      const observer = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate-fadeInUp");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      roomCards.forEach((card) => observer.observe(card));
+    });
+  </script>
+
+  <style>
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      to {
         opacity: 1;
         transform: translateY(0);
+      }
     }
-</style>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const fadeInElements = document.querySelectorAll(".fade-in");
-
-        function handleScroll() {
-            fadeInElements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.9) {
-                    el.classList.add("visible");
-                }
-            });
-        }
-
-        window.addEventListener("scroll", handleScroll);
-        handleScroll(); // Run initially in case it's already in view
-    });
-</script>
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const roomCards = document.querySelectorAll(".room-card");
-    
-        const observer = new IntersectionObserver(
-            (entries, observer) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("animate-fadeInUp");
-                        observer.unobserve(entry.target);
-                    }
-                });
-            },
-            { threshold: 0.2 }
-        );
-    
-        roomCards.forEach((card) => observer.observe(card));
-    });
-    </script>
-    
-    <style>
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(50px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
     .animate-fadeInUp {
-        animation: fadeInUp 0.8s ease-out forwards;
+      animation: fadeInUp 0.8s ease-out forwards;
     }
-    </style>
+  </style>
 
 
 
-    
-<section class="text-center pt-20 px-4 pb-20 bg-white">
-  <h5 class="text-3xl font-bold text-gray-800 mb-6 fade-in opacity-0 translate-y-5">
-    Comfort & Convenience
-  </h5>
-  <div id="servicesContainer" class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-500">
-      
+
+  <section class="text-center pt-20 px-4 pb-20 bg-white">
+    <h5 class="text-3xl font-bold text-gray-800 mb-6 fade-in opacity-0 translate-y-5">
+      Comfort & Convenience
+    </h5>
+    <div id="servicesContainer"
+      class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-500">
+
       <!-- First 3 Cards (With Scroll Animation) -->
-      <div class="service-card fade-in opacity-0 translate-y-5"> 
-          <div class="service-icon text-yellow-500">🍞</div>
-          <h6 class="service-title">Breakfast (Continental)</h6>
-          <p class="service-text">Enjoy a selection of fresh pastries, fruits, and beverages.</p>
+      <div class="service-card fade-in opacity-0 translate-y-5">
+        <div class="service-icon text-yellow-500">🍞</div>
+        <h6 class="service-title">Breakfast (Continental)</h6>
+        <p class="service-text">Enjoy a selection of fresh pastries, fruits, and beverages.</p>
       </div>
 
-      <div class="service-card fade-in opacity-0 translate-y-5"> 
-          <div class="service-icon text-green-500">🥐</div>
-          <h6 class="service-title">Breakfast (Free)</h6>
-          <p class="service-text">Start your day with a complimentary breakfast selection.</p>
+      <div class="service-card fade-in opacity-0 translate-y-5">
+        <div class="service-icon text-green-500">🥐</div>
+        <h6 class="service-title">Breakfast (Free)</h6>
+        <p class="service-text">Start your day with a complimentary breakfast selection.</p>
       </div>
 
-      <div class="service-card fade-in opacity-0 translate-y-5"> 
-          <div class="service-icon text-brown-600">☕</div>
-          <h6 class="service-title">Coffee Shop</h6>
-          <p class="service-text">Enjoy freshly brewed coffee and delicious pastries.</p>
+      <div class="service-card fade-in opacity-0 translate-y-5">
+        <div class="service-icon text-brown-600">☕</div>
+        <h6 class="service-title">Coffee Shop</h6>
+        <p class="service-text">Enjoy freshly brewed coffee and delicious pastries.</p>
       </div>
 
       <!-- Extra Cards (Initially Hidden) -->
       <div class="service-card hidden extra-cards opacity-0 translate-y-5">
-          <div class="service-icon text-blue-600">📶</div>
-          <h6 class="service-title">Internet</h6>
-          <p class="service-text">Enjoy high-speed Wi-Fi access throughout the property.</p>
+        <div class="service-icon text-blue-600">📶</div>
+        <h6 class="service-title">Internet</h6>
+        <p class="service-text">Enjoy high-speed Wi-Fi access throughout the property.</p>
       </div>
 
       <div class="service-card hidden extra-cards opacity-0 translate-y-5">
-          <div class="service-icon text-red-500">🍽️</div>
-          <h6 class="service-title">Restaurants</h6>
-          <p class="service-text">Savor delicious meals with a variety of cuisines.</p>
+        <div class="service-icon text-red-500">🍽️</div>
+        <h6 class="service-title">Restaurants</h6>
+        <p class="service-text">Savor delicious meals with a variety of cuisines.</p>
       </div>
 
       <div class="service-card hidden extra-cards opacity-0 translate-y-5">
-          <div class="service-icon text-blue-500">🛎️</div>
-          <h6 class="service-title">Room Service</h6>
-          <p class="service-text">Order delicious meals delivered straight to your room.</p>
+        <div class="service-icon text-blue-500">🛎️</div>
+        <h6 class="service-title">Room Service</h6>
+        <p class="service-text">Order delicious meals delivered straight to your room.</p>
       </div>
-  </div>
+    </div>
 
-  <!-- "Show More" Button -->
-  <div id="buttonContainer" class="transition-all duration-500 mt-6">
-    <button id="seeMoreBtn" class="text-blue-600 font-semibold px-6 py-2.5 rounded-full hover:opacity-70 transition duration-300 ease-in-out fade-in">
+    <!-- "Show More" Button -->
+    <div id="buttonContainer" class="transition-all duration-500 mt-6">
+      <button id="seeMoreBtn"
+        class="text-blue-600 font-semibold px-6 py-2.5 rounded-full hover:opacity-70 transition duration-300 ease-in-out fade-in">
         Show More
-    </button>
-</div>
-</section>
+      </button>
+    </div>
+  </section>
 
-<style>
-  .service-card {
+  <style>
+    .service-card {
       background: white;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       padding: 1.5rem;
       border-radius: 10px;
       border: 1px solid #e5e7eb;
       transition: all 0.5s ease-in-out;
-  }
+    }
 
-  .service-icon {
+    .service-icon {
       font-size: 2.5rem;
       display: flex;
       justify-content: center;
       margin-bottom: 1rem;
-  }
+    }
 
-  .service-title {
+    .service-title {
       font-size: 1.25rem;
       font-weight: bold;
       color: #374151;
       margin-bottom: 0.5rem;
-  }
+    }
 
-  .service-text {
+    .service-text {
       color: #6b7280;
-  }
+    }
 
-  .fade-in-animation {
+    .fade-in-animation {
       opacity: 1 !important;
       transform: translateY(0) !important;
-  }
-</style>
+    }
+  </style>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
       const seeMoreBtn = document.getElementById("seeMoreBtn");
       const extraCards = document.querySelectorAll(".extra-cards");
       const servicesContainer = document.getElementById("servicesContainer");
@@ -523,13 +547,13 @@
 
       // Scroll Reveal Animation for First 3 Cards
       function revealElements() {
-          fadeInElements.forEach((el) => {
-              const rect = el.getBoundingClientRect();
-              if (rect.top < window.innerHeight * 0.85) {
-                  el.classList.add("opacity-100", "translate-y-0", "transition-all", "duration-1000");
-                  el.classList.remove("opacity-0", "translate-y-5");
-              }
-          });
+        fadeInElements.forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 0.85) {
+            el.classList.add("opacity-100", "translate-y-0", "transition-all", "duration-1000");
+            el.classList.remove("opacity-0", "translate-y-5");
+          }
+        });
       }
 
       window.addEventListener("scroll", revealElements);
@@ -537,206 +561,209 @@
 
       // "See More" Click Animation
       seeMoreBtn.addEventListener("click", function () {
-          let isExpanded = seeMoreBtn.textContent === "Show Less";
+        let isExpanded = seeMoreBtn.textContent === "Show Less";
 
-          extraCards.forEach((card, index) => {
-              if (!isExpanded) {
-                  card.classList.remove("hidden");
-                  setTimeout(() => {
-                      card.classList.add("fade-in-animation");
-                  }, index * 150);
-              } else {
-                  card.classList.remove("fade-in-animation");
-                  setTimeout(() => {
-                      card.classList.add("hidden");
-                  }, 300);
-              }
-          });
+        extraCards.forEach((card, index) => {
+          if (!isExpanded) {
+            card.classList.remove("hidden");
+            setTimeout(() => {
+              card.classList.add("fade-in-animation");
+            }, index * 150);
+          } else {
+            card.classList.remove("fade-in-animation");
+            setTimeout(() => {
+              card.classList.add("hidden");
+            }, 300);
+          }
+        });
 
-          // Adjust the container height smoothly
-          servicesContainer.classList.toggle("pb-12", !isExpanded);
-          buttonContainer.classList.toggle("mt-12", !isExpanded);
+        // Adjust the container height smoothly
+        servicesContainer.classList.toggle("pb-12", !isExpanded);
+        buttonContainer.classList.toggle("mt-12", !isExpanded);
 
-          seeMoreBtn.textContent = isExpanded ? "Show More" : "Show Less";
+        seeMoreBtn.textContent = isExpanded ? "Show More" : "Show Less";
       });
-  });
-</script>
+    });
+  </script>
 
-<section class="text-center pt-20 px-4 pb-20 bg-[#F5F5F5]">
-  <h5 class="text-3xl font-bold text-gray-800 mb-6 fade-in opacity-0 translate-y-5">
-    Happy Guests, Happy Stays
-  </h5>
-  <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-      
+  <section class="text-center pt-20 px-4 pb-20 bg-[#F5F5F5]">
+    <h5 class="text-3xl font-bold text-gray-800 mb-6 fade-in opacity-0 translate-y-5">
+      Happy Guests, Happy Stays
+    </h5>
+    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+
       <!-- Review 1 -->
       <div class="review-item fade-in opacity-0 translate-y-5">
-          <p class="text-gray-800 italic">"Amazing experience! The staff was incredibly helpful and the rooms were spotless."</p>
-          <p class="text-blue-600 font-semibold mt-2">- John Doe ⭐⭐⭐⭐⭐</p>
+        <p class="text-gray-800 italic">"Amazing experience! The staff was incredibly helpful and the rooms were
+          spotless."</p>
+        <p class="text-blue-600 font-semibold mt-2">- John Doe ⭐⭐⭐⭐⭐</p>
       </div>
 
       <!-- Review 2 -->
       <div class="review-item fade-in opacity-0 translate-y-5">
-          <p class="text-gray-800 italic">"Loved the breakfast selection. The ambiance was perfect for a relaxing getaway."</p>
-          <p class="text-blue-600 font-semibold mt-2">- Sarah Lee ⭐⭐⭐⭐⭐</p>
+        <p class="text-gray-800 italic">"Loved the breakfast selection. The ambiance was perfect for a relaxing
+          getaway."</p>
+        <p class="text-blue-600 font-semibold mt-2">- Sarah Lee ⭐⭐⭐⭐⭐</p>
       </div>
 
       <!-- Review 3 -->
       <div class="review-item fade-in opacity-0 translate-y-5">
-          <p class="text-gray-800 italic">"Great location, comfortable rooms, and excellent service. Will visit again!"</p>
-          <p class="text-blue-600 font-semibold mt-2">- Michael Smith ⭐⭐⭐⭐⭐</p>
+        <p class="text-gray-800 italic">"Great location, comfortable rooms, and excellent service. Will visit again!"
+        </p>
+        <p class="text-blue-600 font-semibold mt-2">- Michael Smith ⭐⭐⭐⭐⭐</p>
       </div>
 
       <!-- Hidden Extra Reviews -->
       <div class="review-item hidden extra-reviews opacity-0 translate-y-5">
-          <p class="text-gray-800 italic">"The WiFi was super fast, and the hotel had all the amenities I needed."</p>
-          <p class="text-blue-600 font-semibold mt-2">- Emily Carter ⭐⭐⭐⭐⭐</p>
+        <p class="text-gray-800 italic">"The WiFi was super fast, and the hotel had all the amenities I needed."</p>
+        <p class="text-blue-600 font-semibold mt-2">- Emily Carter ⭐⭐⭐⭐⭐</p>
       </div>
 
       <div class="review-item hidden extra-reviews opacity-0 translate-y-5">
-          <p class="text-gray-800 italic">"A cozy and welcoming place. The coffee shop was a great addition!"</p>
-          <p class="text-blue-600 font-semibold mt-2">- Daniel White ⭐⭐⭐⭐⭐</p>
+        <p class="text-gray-800 italic">"A cozy and welcoming place. The coffee shop was a great addition!"</p>
+        <p class="text-blue-600 font-semibold mt-2">- Daniel White ⭐⭐⭐⭐⭐</p>
       </div>
 
       <div class="review-item hidden extra-reviews opacity-0 translate-y-5">
-          <p class="text-gray-800 italic">"Room service was quick, and the food was delicious!"</p>
-          <p class="text-blue-600 font-semibold mt-2">- Olivia Brown ⭐⭐⭐⭐⭐</p>
+        <p class="text-gray-800 italic">"Room service was quick, and the food was delicious!"</p>
+        <p class="text-blue-600 font-semibold mt-2">- Olivia Brown ⭐⭐⭐⭐⭐</p>
       </div>
-  </div>
+    </div>
 
-</section>
+  </section>
 
-<style>
-  .review-item {
+  <style>
+    .review-item {
       transition: all 0.5s ease-in-out;
-  }
+    }
 
-  .fade-in-animation {
+    .fade-in-animation {
       opacity: 1 !important;
       transform: translateY(0) !important;
-  }
-</style>
+    }
+  </style>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
       const seeMoreBtn = document.getElementById("seeMoreBtn");
       const extraReviews = document.querySelectorAll(".extra-reviews");
       const fadeInElements = document.querySelectorAll(".fade-in");
 
       // Scroll Reveal Animation for Initial Reviews
       function revealElements() {
-          fadeInElements.forEach((el) => {
-              const rect = el.getBoundingClientRect();
-              if (rect.top < window.innerHeight * 0.85) {
-                  el.classList.add("opacity-100", "translate-y-0", "transition-all", "duration-1000");
-                  el.classList.remove("opacity-0", "translate-y-5");
-              }
-          });
+        fadeInElements.forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 0.85) {
+            el.classList.add("opacity-100", "translate-y-0", "transition-all", "duration-1000");
+            el.classList.remove("opacity-0", "translate-y-5");
+          }
+        });
       }
 
       window.addEventListener("scroll", revealElements);
       revealElements(); // Initial check in case elements are already in view
 
-  });
-</script>
+    });
+  </script>
 
 
-<footer
-  id="footer"
-  class="relative text-white text-center py-8 sm:py-10 md:py-12 transition-all duration-500 ease-in-out bg-no-repeat bg-cover bg-center"
-  style="background-image: url('./src/footer2.jpg'); transition: padding 0.5s ease, opacity 0.5s ease; opacity: 0.5;"
->
-  <!-- Optional Dark Overlay for Better Text Contrast -->
-  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+  <footer id="footer"
+    class="relative text-white text-center py-8 sm:py-10 md:py-12 transition-all duration-500 ease-in-out bg-no-repeat bg-cover bg-center"
+    style="background-image: url('./src/footer2.jpg'); transition: padding 0.5s ease, opacity 0.5s ease; opacity: 0.5;">
+    <!-- Optional Dark Overlay for Better Text Contrast -->
+    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
 
-  <div class="relative container mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      
-      <!-- Left Column: Brand & Tagline -->
-      <div class="flex flex-col items-center md:items-start">
-        <a href="#" class="flex items-center mb-4">
-          <img src="./src/logo2.png" alt="Residencia del Hamor Logo" class="h-10 w-auto mr-2">
-          <span class="text-xl font-semibold">Residencia del Hamor</span>
-        </a>
-        <p class="text-gray-200 max-w-xs text-center md:text-left">
-          Your serene nature retreat in Casiguran, Sorsogon. Relax amidst lush greenery and breathtaking landscapes.
-        </p>
-      </div>
-      
-      <!-- Middle Column: Quick Links (Centered Text) -->
-      <div class="text-center">
-        <h3 class="text-lg font-semibold mb-3">Explore</h3>
-        <ul class="space-y-2 text-sm sm:text-base">
-          <li><a href="index.html" class="text-gray-200 hover:text-white transition">Home</a></li>
-          <li><a href="./src/accommodations.html" class="text-gray-200 hover:text-white transition">Accommodations</a></li>
-          <li><a href="./src/amenities.html" class="text-gray-200 hover:text-white transition">Amenities</a></li>
-          <li><a href="./src/book.html" class="text-gray-200 hover:text-white transition">Book Now</a></li>
-          <li><a href="./src/contact.html" class="text-gray-200 hover:text-white transition">Contact</a></li>
-        </ul>
-      </div>
-      
-      <!-- Right Column: Contact & Social -->
-      <div class="text-center md:text-right">
-        <h3 class="text-lg font-semibold mb-3">Connect With Us</h3>
-        <p class="text-gray-200 text-sm sm:text-base">Inlagadian, Casiguran, Sorsogon, Philippines</p>
-        <p class="text-gray-200 text-sm sm:text-base">
-          Email: 
-          <a href="mailto:contact@residenciadelhamor.com" class="hover:text-white transition">
-            contact@residenciadelhamor.com
+    <div class="relative container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <!-- Left Column: Brand & Tagline -->
+        <div class="flex flex-col items-center md:items-start">
+          <a href="#" class="flex items-center mb-4">
+            <img src="./src/logo2.png" alt="Residencia del Hamor Logo" class="h-10 w-auto mr-2">
+            <span class="text-xl font-semibold">Residencia del Hamor</span>
           </a>
-        </p>
-        <p class="text-gray-200 text-sm sm:text-base">Phone: +63 912 345 6789</p>
-        <!-- Social Media Links -->
-        <div class="flex justify-center md:justify-end space-x-4 mt-4">
-          <a href="#" class="text-gray-200 hover:text-white transition">
-            <i class="fa-brands fa-facebook fa-lg"></i>
-          </a>
-          <a href="#" class="text-gray-200 hover:text-white transition">
-            <i class="fa-brands fa-instagram fa-lg"></i>
-          </a>
-          <a href="#" class="text-gray-200 hover:text-white transition">
-            <i class="fa-brands fa-twitter fa-lg"></i>
-          </a>
+          <p class="text-gray-200 max-w-xs text-center md:text-left">
+            Your serene nature retreat in Casiguran, Sorsogon. Relax amidst lush greenery and breathtaking landscapes.
+          </p>
+        </div>
+
+        <!-- Middle Column: Quick Links (Centered Text) -->
+        <div class="text-center">
+          <h3 class="text-lg font-semibold mb-3">Explore</h3>
+          <ul class="space-y-2 text-sm sm:text-base">
+            <li><a href="index.html" class="text-gray-200 hover:text-white transition">Home</a></li>
+            <li><a href="./src/accommodations.html" class="text-gray-200 hover:text-white transition">Accommodations</a>
+            </li>
+            <li><a href="./src/amenities.html" class="text-gray-200 hover:text-white transition">Amenities</a></li>
+            <li><a href="./src/book.html" class="text-gray-200 hover:text-white transition">Book Now</a></li>
+            <li><a href="./src/contact.html" class="text-gray-200 hover:text-white transition">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Right Column: Contact & Social -->
+        <div class="text-center md:text-right">
+          <h3 class="text-lg font-semibold mb-3">Connect With Us</h3>
+          <p class="text-gray-200 text-sm sm:text-base">Inlagadian, Casiguran, Sorsogon, Philippines</p>
+          <p class="text-gray-200 text-sm sm:text-base">
+            Email:
+            <a href="mailto:contact@residenciadelhamor.com" class="hover:text-white transition">
+              contact@residenciadelhamor.com
+            </a>
+          </p>
+          <p class="text-gray-200 text-sm sm:text-base">Phone: +63 912 345 6789</p>
+          <!-- Social Media Links -->
+          <div class="flex justify-center md:justify-end space-x-4 mt-4">
+            <a href="#" class="text-gray-200 hover:text-white transition">
+              <i class="fa-brands fa-facebook fa-lg"></i>
+            </a>
+            <a href="#" class="text-gray-200 hover:text-white transition">
+              <i class="fa-brands fa-instagram fa-lg"></i>
+            </a>
+            <a href="#" class="text-gray-200 hover:text-white transition">
+              <i class="fa-brands fa-twitter fa-lg"></i>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-    
-    <!-- Footer Bottom -->
-    <div class="border-t border-gray-500 mt-8 pt-4">
-      <p class="text-gray-200 text-xs sm:text-sm">
-        © 2025 Residencia Del Hamor. All rights reserved.
-      </p>
-    </div>
-  </div>
-</footer>
 
-<!-- JavaScript for Scroll Fade and Padding Adjustment -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const footer = document.getElementById("footer");
+      <!-- Footer Bottom -->
+      <div class="border-t border-gray-500 mt-8 pt-4">
+        <p class="text-gray-200 text-xs sm:text-sm">
+          © 2025 Residencia Del Hamor. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
 
-    function handleScroll() {
-      const scrollPosition = window.scrollY + window.innerHeight;
-      const footerPosition = document.body.offsetHeight - 100;
-      
-      if (scrollPosition >= footerPosition) {
-        footer.style.paddingTop = "50px";
-        footer.style.paddingBottom = "50px";
-        footer.style.opacity = "1";
-      } else {
-        footer.style.paddingTop = "40px";
-        footer.style.paddingBottom = "40px";
-        footer.style.opacity = "0.5";
+  <!-- JavaScript for Scroll Fade and Padding Adjustment -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const footer = document.getElementById("footer");
+
+      function handleScroll() {
+        const scrollPosition = window.scrollY + window.innerHeight;
+        const footerPosition = document.body.offsetHeight - 100;
+
+        if (scrollPosition >= footerPosition) {
+          footer.style.paddingTop = "50px";
+          footer.style.paddingBottom = "50px";
+          footer.style.opacity = "1";
+        } else {
+          footer.style.paddingTop = "40px";
+          footer.style.paddingBottom = "40px";
+          footer.style.opacity = "0.5";
+        }
       }
-    }
 
-    window.addEventListener("scroll", handleScroll);
-  });
-</script>
-
+      window.addEventListener("scroll", handleScroll);
+    });
+  </script>
 
 
 
 
-  
+
+
 </body>
+
 </html>
